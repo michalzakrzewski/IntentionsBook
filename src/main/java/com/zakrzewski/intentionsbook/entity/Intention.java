@@ -34,6 +34,10 @@ public class Intention {
     @Column(name = "payment")
     private int payment;
 
+    @OneToOne
+    @JoinColumn(name = "church_worker_id")
+    private ChurchWorker churchWorker;
+
     public Intention() {
     }
 
@@ -100,6 +104,14 @@ public class Intention {
 
     public void setPayment(int payment) {
         this.payment = payment;
+    }
+
+    public ChurchWorker getChurchWorker() {
+        return churchWorker;
+    }
+
+    public void setChurchWorker(ChurchWorker churchWorker) {
+        this.churchWorker = churchWorker;
     }
 
     @Override

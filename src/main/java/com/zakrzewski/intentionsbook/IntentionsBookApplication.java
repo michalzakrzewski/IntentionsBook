@@ -33,36 +33,16 @@ public class IntentionsBookApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void createFinalIntention(){
-        ChurchWorker churchWorker = new ChurchWorker();
-        Intention intention = new Intention();
-        Intention intention2 = new Intention();
-        List<Intention> intentionList = new ArrayList<>();
-        churchWorker.setLogin("admin");
-        churchWorker.setPassword("qwerty");
-        churchWorker.setFullName("Admin Admin");
-        churchWorker.setChurchRole("Role Admin");
-        intention.setDateOfMass(LocalDate.of(2020, 10, 20));
-        intention.setTimeOfMass(LocalTime.of(8,0));
-        intention.setDescriptionOfIntention("Za + poleconych w wypominkach");
-        intention.setPriestOfMass("Kaplan Kaplan");
-        intention.setOtherComment("none");
-        intention.setPayment(50);
-
-        intention2.setDateOfMass(LocalDate.of(2020, 10, 21));
-        intention2.setTimeOfMass(LocalTime.of(7,0));
-        intention2.setDescriptionOfIntention("Za ++ Jadwigę i Tadeusza");
-        intention2.setPriestOfMass("Kaplan2 Kaplan2");
-        intention2.setOtherComment("none2");
-        intention2.setPayment(200);
-
-        intentionList.add(intention);
-        intentionList.add(intention2);
-
-        churchWorker.setIntentions(intentionList);
-
-        intentionService.save(intention);
-        intentionService.save(intention2);
-        churchWorkerService.save(churchWorker);
+       ChurchWorker proboszcz = new ChurchWorker("proboszcz", "qwerty", "Proboszcz Proboszcz", "proboszcz");
+       ChurchWorker wikary = new ChurchWorker("wikary", "qwerty", "Wikary Wikary", "wikary");
+       churchWorkerService.save(proboszcz);
+       churchWorkerService.save(wikary);
+       Intention intention1 = new Intention(LocalDate.of(2020, 11, 21), LocalTime.of(8, 0), "Za ++ zbiorowa", proboszcz.getFullName(), "brak", 50);
+       Intention intention2 = new Intention(LocalDate.of(2020, 11, 21), LocalTime.of(8, 0), "Za gregoriańska", wikary.getFullName(), "brak", 200);
+       intention1.setChurchWorker(proboszcz);
+       intention2.setChurchWorker(wikary);
+       intentionService.save(intention1);
+       intentionService.save(intention2);
 
     }
 

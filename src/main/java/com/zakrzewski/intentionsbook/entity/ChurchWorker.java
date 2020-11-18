@@ -24,9 +24,6 @@ public class ChurchWorker {
     @Column(name = "church_role")
     private String churchRole;
 
-    @OneToMany
-    @JoinColumn(name = "intention_id")
-    private List<Intention> intentions;
 
     public ChurchWorker() {
     }
@@ -78,13 +75,6 @@ public class ChurchWorker {
         this.churchRole = churchRole;
     }
 
-    public List<Intention> getIntentions() {
-        return intentions;
-    }
-
-    public void setIntentions(List<Intention> intentions) {
-        this.intentions = intentions;
-    }
 
     @Override
     public boolean equals(Object o) {

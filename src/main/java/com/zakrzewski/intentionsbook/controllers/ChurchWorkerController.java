@@ -24,8 +24,8 @@ public class ChurchWorkerController {
     }
 
     @GetMapping(path = "/workers")
-    public List<ChurchWorker> getAllChurchWorkers(){
-        return churchWorkerService.getAllChurchWorkers();
+    public ResponseEntity<List<ChurchWorker>> getAll(){
+        return new ResponseEntity<>(churchWorkerService.getAllChurchWorkers(), HttpStatus.OK);
     }
 
     @GetMapping(path = "/worker")
