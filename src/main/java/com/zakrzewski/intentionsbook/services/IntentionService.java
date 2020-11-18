@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class IntentionService {
 
-    private final IntentionRepository intentionRepository;
+    private IntentionRepository intentionRepository;
 
     @Autowired
     public IntentionService(IntentionRepository intentionRepository) {

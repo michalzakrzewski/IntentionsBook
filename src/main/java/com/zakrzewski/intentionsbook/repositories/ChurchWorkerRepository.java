@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ChurchWorkerRepository extends JpaRepository<ChurchWorker, Long> {
 
-    ChurchWorker findChurchWorkerByFullName(String fullName);
+    ChurchWorker findChurchWorkerByLogin(String login);
 }

@@ -40,11 +40,11 @@ class IntentionsBookApplicationTests {
     @Test
     public void findChurchWorkerByFullName_checkIfFindCorrectly(){
         ChurchWorker churchWorkerToSave = new ChurchWorker("login", "password", "Priest priest", "Priest");
-        Mockito.when(churchWorkerService.findChurchWorkerByFullName(churchWorkerToSave.getFullName())).thenReturn(churchWorkerToSave);
+        Mockito.when(churchWorkerService.findChurchWorkerByLogin(churchWorkerToSave.getLogin())).thenReturn(churchWorkerToSave);
 
         ChurchWorker expectedChurchWorker = new ChurchWorker("login", "password", "Priest priest", "Priest");
-        ChurchWorker churchWorkerByFullName = churchWorkerService.findChurchWorkerByFullName(expectedChurchWorker.getFullName());
-        assertEquals(churchWorkerToSave.getFullName(), churchWorkerByFullName.getFullName());
+        ChurchWorker churchWorkerByFullName = churchWorkerService.findChurchWorkerByLogin(expectedChurchWorker.getLogin());
+        assertEquals(churchWorkerToSave.getLogin(), churchWorkerByFullName.getLogin());
 
     }
 

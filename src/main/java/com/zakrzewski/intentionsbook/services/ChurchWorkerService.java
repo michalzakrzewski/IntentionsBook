@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class ChurchWorkerService {
 
-    private final ChurchWorkerRepository churchWorkerRepository;
+    private ChurchWorkerRepository churchWorkerRepository;
 
     @Autowired
     public ChurchWorkerService(ChurchWorkerRepository churchWorkerRepository) {
@@ -25,8 +25,8 @@ public class ChurchWorkerService {
         churchWorkerRepository.save(churchWorker);
     }
 
-    public ChurchWorker findChurchWorkerByFullName(String fullName){
-        return churchWorkerRepository.findChurchWorkerByFullName(fullName);
+    public ChurchWorker findChurchWorkerByLogin(String login){
+        return churchWorkerRepository.findChurchWorkerByLogin(login);
     }
 
 
