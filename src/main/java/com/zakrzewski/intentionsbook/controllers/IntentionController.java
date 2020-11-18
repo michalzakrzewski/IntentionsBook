@@ -1,5 +1,6 @@
 package com.zakrzewski.intentionsbook.controllers;
 
+import com.zakrzewski.intentionsbook.dtos.IntentionDTO;
 import com.zakrzewski.intentionsbook.entity.Intention;
 import com.zakrzewski.intentionsbook.services.IntentionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class IntentionController {
     @GetMapping(path = "/intentions")
     public ResponseEntity<List<Intention>> getAllIntention(){
         return new ResponseEntity<>(intentionService.getAllIntentions(), HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/intentions2")
+    public ResponseEntity<List<IntentionDTO>> getAllIntentionDTO(){
+        return new ResponseEntity<>(intentionService.getAllIntentionDTO(), HttpStatus.OK);
     }
 
 

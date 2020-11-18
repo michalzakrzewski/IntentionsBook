@@ -25,9 +25,6 @@ public class Intention {
     @Column(name = "description_of_intention")
     private String descriptionOfIntention;
 
-    @Column(name = "which_priest")
-    private String priestOfMass;
-
     @Column(name = "others_attention")
     private String otherComment;
 
@@ -36,18 +33,18 @@ public class Intention {
 
     @OneToOne
     @JoinColumn(name = "church_worker_id")
-    private ChurchWorker churchWorker;
+    private ChurchWorker priestOfMass;
 
     public Intention() {
     }
 
-    public Intention(LocalDate dateOfMass, LocalTime timeOfMass, String descriptionOfIntention, String priestOfMass, String otherComment, int payment) {
+    public Intention(LocalDate dateOfMass, LocalTime timeOfMass, String descriptionOfIntention, String otherComment, int payment, ChurchWorker priestOfMass) {
         this.dateOfMass = dateOfMass;
         this.timeOfMass = timeOfMass;
         this.descriptionOfIntention = descriptionOfIntention;
-        this.priestOfMass = priestOfMass;
         this.otherComment = otherComment;
         this.payment = payment;
+        this.priestOfMass = priestOfMass;
     }
 
     public Long getId() {
@@ -82,14 +79,6 @@ public class Intention {
         this.descriptionOfIntention = descriptionOfIntention;
     }
 
-    public String getPriestOfMass() {
-        return priestOfMass;
-    }
-
-    public void setPriestOfMass(String priestOfMass) {
-        this.priestOfMass = priestOfMass;
-    }
-
     public String getOtherComment() {
         return otherComment;
     }
@@ -106,12 +95,12 @@ public class Intention {
         this.payment = payment;
     }
 
-    public ChurchWorker getChurchWorker() {
-        return churchWorker;
+    public ChurchWorker getPriestOfMass() {
+        return priestOfMass;
     }
 
-    public void setChurchWorker(ChurchWorker churchWorker) {
-        this.churchWorker = churchWorker;
+    public void setPriestOfMass(ChurchWorker priestOfMass) {
+        this.priestOfMass = priestOfMass;
     }
 
     @Override
@@ -124,13 +113,13 @@ public class Intention {
                 Objects.equals(dateOfMass, intention.dateOfMass) &&
                 Objects.equals(timeOfMass, intention.timeOfMass) &&
                 Objects.equals(descriptionOfIntention, intention.descriptionOfIntention) &&
-                Objects.equals(priestOfMass, intention.priestOfMass) &&
-                Objects.equals(otherComment, intention.otherComment);
+                Objects.equals(otherComment, intention.otherComment) &&
+                Objects.equals(priestOfMass, intention.priestOfMass);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateOfMass, timeOfMass, descriptionOfIntention, priestOfMass, otherComment, payment);
+        return Objects.hash(id, dateOfMass, timeOfMass, descriptionOfIntention, otherComment, payment, priestOfMass);
     }
 
     @Override
@@ -140,9 +129,9 @@ public class Intention {
                 ", dateOfMass=" + dateOfMass +
                 ", timeOfMass=" + timeOfMass +
                 ", descriptionOfIntention='" + descriptionOfIntention + '\'' +
-                ", priestOfMass='" + priestOfMass + '\'' +
                 ", otherComment='" + otherComment + '\'' +
                 ", payment=" + payment +
+                ", priestOfMass=" + priestOfMass +
                 '}';
     }
 }

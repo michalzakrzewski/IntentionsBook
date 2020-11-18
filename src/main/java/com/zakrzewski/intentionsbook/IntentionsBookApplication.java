@@ -12,8 +12,6 @@ import org.springframework.context.event.EventListener;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class IntentionsBookApplication {
@@ -33,17 +31,15 @@ public class IntentionsBookApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void createFinalIntention(){
-       ChurchWorker proboszcz = new ChurchWorker("proboszcz", "qwerty", "Proboszcz Proboszcz", "proboszcz");
-       ChurchWorker wikary = new ChurchWorker("wikary", "qwerty", "Wikary Wikary", "wikary");
-       churchWorkerService.save(proboszcz);
-       churchWorkerService.save(wikary);
-       Intention intention1 = new Intention(LocalDate.of(2020, 11, 21), LocalTime.of(8, 0), "Za ++ zbiorowa", proboszcz.getFullName(), "brak", 50);
-       Intention intention2 = new Intention(LocalDate.of(2020, 11, 21), LocalTime.of(8, 0), "Za gregoriańska", wikary.getFullName(), "brak", 200);
-       intention1.setChurchWorker(proboszcz);
-       intention2.setChurchWorker(wikary);
-       intentionService.save(intention1);
-       intentionService.save(intention2);
+        ChurchWorker proboszcz = new ChurchWorker("proboszcz", "qwerty", "Proboszcz Proboszcz", "proboszcz");
+        ChurchWorker wikary = new ChurchWorker("wikary", "qwerty", "Wikary Wikary", "wikary");
+        churchWorkerService.save(proboszcz);
+        churchWorkerService.save(wikary);
 
+        Intention intention = new Intention(LocalDate.of(2020, 11, 18), LocalTime.of(8,0), "Za ++ wypominkach", "brak", 50, proboszcz);
+        Intention intention2 = new Intention(LocalDate.of(2020, 11, 18), LocalTime.of(18,0), "Za parafian", "brak", 100, wikary);
+        intentionService.save(intention);
+        intentionService.save(intention2);
     }
 
 

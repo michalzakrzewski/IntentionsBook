@@ -1,7 +1,6 @@
 package com.zakrzewski.intentionsbook.entity;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
