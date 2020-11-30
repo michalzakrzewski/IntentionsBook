@@ -22,7 +22,6 @@ public class IntentionDTO {
     public IntentionDTO() {
     }
 
-
     public LocalDate getDateOfMass() {
         return dateOfMass;
     }

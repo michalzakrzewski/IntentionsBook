@@ -23,12 +23,8 @@ public class IntentionController {
         this.intentionService = intentionService;
     }
 
-    @GetMapping(path = "/intentions")
-    public ResponseEntity<List<Intention>> getAllIntention(){
-        return new ResponseEntity<>(intentionService.getAllIntentions(), HttpStatus.OK);
-    }
 
-    @GetMapping(path = "/intentions2")
+    @GetMapping(path = "/intentions")
     public ResponseEntity<List<IntentionDTO>> getAllIntentionDTO(){
         return new ResponseEntity<>(intentionService.getAllIntentionDTO(), HttpStatus.OK);
     }

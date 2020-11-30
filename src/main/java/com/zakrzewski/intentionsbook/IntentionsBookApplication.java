@@ -1,5 +1,6 @@
 package com.zakrzewski.intentionsbook;
 
+import com.zakrzewski.intentionsbook.configurations.WebSecurityConfig;
 import com.zakrzewski.intentionsbook.entity.ChurchWorker;
 import com.zakrzewski.intentionsbook.entity.Intention;
 import com.zakrzewski.intentionsbook.repositories.IntentionRepository;
@@ -9,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -31,8 +33,8 @@ public class IntentionsBookApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void createFinalIntention(){
-        ChurchWorker proboszcz = new ChurchWorker("proboszcz", "qwerty", "Proboszcz Proboszcz", "proboszcz");
-        ChurchWorker wikary = new ChurchWorker("wikary", "qwerty", "Wikary Wikary", "wikary");
+        ChurchWorker proboszcz = new ChurchWorker("proboszcz", new BCryptPasswordEncoder().encode("qwerty"), "Proboszcz Proboszcz", "proboszcz");
+        ChurchWorker wikary = new ChurchWorker("wikary", new BCryptPasswordEncoder().encode("qwerty"), "Wikary Wikary", "wikary");
         churchWorkerService.save(proboszcz);
         churchWorkerService.save(wikary);
 
