@@ -1,13 +1,13 @@
 package com.zakrzewski.intentionsbook;
 
 import com.zakrzewski.intentionsbook.entity.ChurchWorker;
+import com.zakrzewski.intentionsbook.mappers.IntentionMapper;
 import com.zakrzewski.intentionsbook.repositories.ChurchWorkerRepository;
 import com.zakrzewski.intentionsbook.repositories.IntentionRepository;
 import com.zakrzewski.intentionsbook.services.ChurchWorkerService;
 import com.zakrzewski.intentionsbook.services.IntentionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -23,11 +23,13 @@ class IntentionsBookApplicationTests {
     private ChurchWorkerService churchWorkerService;
     private ChurchWorkerRepository churchWorkerRepository;
 
+    private IntentionMapper intentionMapper;
+
     @BeforeEach
     public void setup(){
         intentionRepository = Mockito.mock(IntentionRepository.class);
         churchWorkerRepository = Mockito.mock(ChurchWorkerRepository.class);
-        intentionService = new IntentionService(intentionRepository);
+        intentionService = new IntentionService(intentionRepository, intentionMapper);
         churchWorkerService = new ChurchWorkerService(churchWorkerRepository);
     }
 

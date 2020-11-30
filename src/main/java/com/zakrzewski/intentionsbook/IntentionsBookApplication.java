@@ -1,5 +1,6 @@
 package com.zakrzewski.intentionsbook;
 
+import com.zakrzewski.intentionsbook.configurations.WebSecurityConfig;
 import com.zakrzewski.intentionsbook.entity.ChurchWorker;
 import com.zakrzewski.intentionsbook.entity.Intention;
 import com.zakrzewski.intentionsbook.repositories.IntentionRepository;
@@ -9,11 +10,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class IntentionsBookApplication {
@@ -33,37 +33,15 @@ public class IntentionsBookApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void createFinalIntention(){
-        ChurchWorker churchWorker = new ChurchWorker();
-        Intention intention = new Intention();
-        Intention intention2 = new Intention();
-        List<Intention> intentionList = new ArrayList<>();
-        churchWorker.setLogin("admin");
-        churchWorker.setPassword("qwerty");
-        churchWorker.setFullName("Admin Admin");
-        churchWorker.setChurchRole("Role Admin");
-        intention.setDateOfMass(LocalDate.of(2020, 10, 20));
-        intention.setTimeOfMass(LocalTime.of(8,0));
-        intention.setDescriptionOfIntention("Za + poleconych w wypominkach");
-        intention.setPriestOfMass("Kaplan Kaplan");
-        intention.setOtherComment("none");
-        intention.setPayment(50);
+        ChurchWorker proboszcz = new ChurchWorker("proboszcz", new BCryptPasswordEncoder().encode("qwerty"), "Proboszcz Proboszcz", "proboszcz");
+        ChurchWorker wikary = new ChurchWorker("wikary", new BCryptPasswordEncoder().encode("qwerty"), "Wikary Wikary", "wikary");
+        churchWorkerService.save(proboszcz);
+        churchWorkerService.save(wikary);
 
-        intention2.setDateOfMass(LocalDate.of(2020, 10, 21));
-        intention2.setTimeOfMass(LocalTime.of(7,0));
-        intention2.setDescriptionOfIntention("Za ++ Jadwigę i Tadeusza");
-        intention2.setPriestOfMass("Kaplan2 Kaplan2");
-        intention2.setOtherComment("none2");
-        intention2.setPayment(200);
-
-        intentionList.add(intention);
-        intentionList.add(intention2);
-
-        churchWorker.setIntentions(intentionList);
-
+        Intention intention = new Intention(LocalDate.of(2020, 11, 18), LocalTime.of(8,0), "Za ++ wypominkach", "brak", 50, proboszcz);
+        Intention intention2 = new Intention(LocalDate.of(2020, 11, 18), LocalTime.of(18,0), "Za parafian", "brak", 100, wikary);
         intentionService.save(intention);
         intentionService.save(intention2);
-        churchWorkerService.save(churchWorker);
-
     }
 
 
