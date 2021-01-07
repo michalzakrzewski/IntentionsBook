@@ -2,8 +2,6 @@ package com.zakrzewski.intentionsbook.dtos;
 
 public class ChurchWorkerDTO {
 
-    private Long id;
-
     private String login;
 
     private String password;
@@ -14,8 +12,6 @@ public class ChurchWorkerDTO {
 
     public static class ChurchWorkerDTOBuilder{
 
-        private Long id;
-
         private String login;
 
         private String password;
@@ -23,11 +19,6 @@ public class ChurchWorkerDTO {
         private String fullName;
 
         private String churchRole;
-
-        public ChurchWorkerDTOBuilder id(Long id){
-            this.id = id;
-            return this;
-        }
 
         public ChurchWorkerDTOBuilder login(String login){
             this.login = login;
@@ -49,7 +40,6 @@ public class ChurchWorkerDTO {
 
         public ChurchWorkerDTO build(){
             ChurchWorkerDTO churchWorkerDTO = new ChurchWorkerDTO();
-            churchWorkerDTO.id = this.id;
             churchWorkerDTO.login = this.login;
             churchWorkerDTO.password = this.password;
             churchWorkerDTO.fullName = this.fullName;
@@ -58,14 +48,6 @@ public class ChurchWorkerDTO {
             return churchWorkerDTO;
         }
 
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getLogin() {
