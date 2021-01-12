@@ -31,7 +31,13 @@ public class IntentionService {
         return intentions.stream().map(intention -> intentionMapper.mapToIntentionDTO(intention)).collect(Collectors.toList());
     }
 
-    public void save(Intention intention){
+    public void saveIntentionDTO(IntentionDTO intentionDTO){
+        if (intentionDTO.getDateOfMass() == null || intentionDTO.getTimeOfMass() == null
+                || intentionDTO.getDescriptionOfIntention().equals("") || intentionDTO.getPriestOfMass().equals("")
+                || intentionDTO.getOtherComment().equals("") || intentionDTO.getPayment() == 0){
+            throw new IllegalArgumentException("Parameters cannot be empty");
+        }
+        Intention intention = intentionMapper.mapToIntention(intentionDTO);
         intentionRepository.save(intention);
     }
 
