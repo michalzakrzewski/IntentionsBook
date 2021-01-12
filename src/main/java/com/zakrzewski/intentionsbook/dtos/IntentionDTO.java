@@ -22,6 +22,15 @@ public class IntentionDTO {
     public IntentionDTO() {
     }
 
+    public IntentionDTO(LocalDate dateOfMass, LocalTime timeOfMass, String descriptionOfIntention, String priestOfMass, String otherComment, int payment) {
+        this.dateOfMass = dateOfMass;
+        this.timeOfMass = timeOfMass;
+        this.descriptionOfIntention = descriptionOfIntention;
+        this.priestOfMass = priestOfMass;
+        this.otherComment = otherComment;
+        this.payment = payment;
+    }
+
     public LocalDate getDateOfMass() {
         return dateOfMass;
     }
