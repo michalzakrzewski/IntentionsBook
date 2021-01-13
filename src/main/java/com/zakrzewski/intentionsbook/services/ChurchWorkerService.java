@@ -1,6 +1,7 @@
 package com.zakrzewski.intentionsbook.services;
 
-import com.zakrzewski.intentionsbook.dtos.ChurchWorkerDTO;
+import com.zakrzewski.intentionsbook.dtos.ChurchWorkerRequest;
+import com.zakrzewski.intentionsbook.dtos.ChurchWorkerResponse;
 import com.zakrzewski.intentionsbook.entity.ChurchWorker;
 import com.zakrzewski.intentionsbook.mappers.ChurchWorkerMapper;
 import com.zakrzewski.intentionsbook.repositories.ChurchWorkerRepository;
@@ -30,28 +31,15 @@ public class ChurchWorkerService {
         return new BCryptPasswordEncoder();
     }
 
-    public void save(ChurchWorkerDTO churchWorkerDTO){
-        String encodePassword = passwordEncoder().encode(churchWorkerDTO.getPassword());
-        churchWorkerDTO.setPassword(encodePassword);
-        ChurchWorker churchWorker = churchWorkerMapper.mapToChurchWorker(churchWorkerDTO);
+    public void save(ChurchWorkerRequest churchWorkerRequest){
+        String encodePassword = passwordEncoder().encode(churchWorkerRequest.getPassword());
+        churchWorkerRequest.setPassword(encodePassword);
+        ChurchWorker churchWorker = churchWorkerMapper.mapToChurchWorkerFromRequest(churchWorkerRequest);
         churchWorkerRepository.save(churchWorker);
     }
 
-    public List<ChurchWorker> getAllChurchWorkers(){
-        return churchWorkerRepository.findAll();
+    public List<ChurchWorkerResponse> getAllChurchWorkerResponse(){
+        List<ChurchWorker> churchWorkerList = churchWorkerRepository.findAll();
+        return churchWorkerList.stream().map(churchWorker -> churchWorkerMapper.mapToChurchWorkerResponse(churchWorker)).collect(Collectors.toList());
     }
-
-    public List<ChurchWorkerDTO> getAllChurchWorkerDTO(){
-        List<ChurchWorker> churchWorkers = churchWorkerRepository.findAll();
-        return churchWorkers.stream().map(churchWorker -> churchWorkerMapper.mapToChurchWorkerDTO(churchWorker)).collect(Collectors.toList());
-    }
-
-
-    public ChurchWorkerDTO findChurchWorkerByLogin(String login){
-        ChurchWorker churchWorkerByLogin = churchWorkerRepository.findChurchWorkerByLogin(login);
-        ChurchWorkerDTO churchWorkerDTO = churchWorkerMapper.mapToChurchWorkerDTO(churchWorkerByLogin);
-        return churchWorkerDTO;
-    }
-
-
 }

@@ -1,7 +1,7 @@
 package com.zakrzewski.intentionsbook.controllers;
 
-import com.zakrzewski.intentionsbook.dtos.IntentionDTO;
-import com.zakrzewski.intentionsbook.entity.Intention;
+import com.zakrzewski.intentionsbook.dtos.IntentionRequest;
+import com.zakrzewski.intentionsbook.dtos.IntentionResponse;
 import com.zakrzewski.intentionsbook.services.IntentionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,17 +21,18 @@ public class IntentionController {
         this.intentionService = intentionService;
     }
 
-
-    @GetMapping(path = "/intentions")
-    public ResponseEntity<List<IntentionDTO>> getAllIntentionDTO(){
-        return new ResponseEntity<>(intentionService.getAllIntentionDTO(), HttpStatus.OK);
-    }
-
     @PostMapping(path = "/intention")
-    public ResponseEntity<String> saveIntention(@RequestBody IntentionDTO intentionDTO){
-        intentionService.saveIntentionDTO(intentionDTO);
+    public ResponseEntity<String> saveIntention(@RequestBody IntentionRequest intentionRequest){
+        intentionService.save(intentionRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(String.format("Intention saved correctly"));
     }
+
+    @GetMapping(path = "/intentions")
+    public ResponseEntity<List<IntentionResponse>> getAllIntentions(){
+        return new ResponseEntity<>(intentionService.getAllIntentions(), HttpStatus.OK);
+    }
+
+
 
 
 }

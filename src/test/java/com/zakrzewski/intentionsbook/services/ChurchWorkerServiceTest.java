@@ -25,7 +25,7 @@ public class ChurchWorkerServiceTest {
         churchWorkerService = new ChurchWorkerService(churchWorkerRepository, churchWorkerMapper);
     }
 
-    @Test
+    /*@Test
     public void save_saveClientInDatabaseCorrectly(){
         ChurchWorkerDTO churchWorkerDTO = new ChurchWorkerDTO.ChurchWorkerDTOBuilder()
                 .login("j_kowalski")
@@ -35,31 +35,6 @@ public class ChurchWorkerServiceTest {
                 .build();
         churchWorkerService.save(churchWorkerDTO);
 
-    }
+    }*/
 
-    @Test
-    public void findChurchWorkerByLogin_checkIfFindCorrectly(){
-        /*ChurchWorker churchWorkerToSave = new ChurchWorker("j_kowalski", "qwerty", "Jan Kowalski", "Kapłan");
-
-
-        ChurchWorkerDTO churchWorkerDTO = new ChurchWorkerDTO.ChurchWorkerDTOBuilder()
-                .login("j_kowalski")
-                .password("test")
-                .fullName("Jan Kowalski")
-                .churchRole("kapłan")
-                .build();
-        churchWorkerService.save(churchWorkerDTO);
-        ChurchWorkerDTO churchWorkerByLogin = churchWorkerService.findChurchWorkerByLogin(churchWorkerDTO.getLogin());
-
-        Assertions.assertEquals(churchWorkerByLogin.getLogin(), churchWorkerDTO.getLogin());*/
-        //ChurchWorker churchWorkerToSave = new ChurchWorker("j_kowalski", "qwerty", "Jan Kowalski", "Kapłan");
-        //ChurchWorkerDTO churchWorkerDTOToSave = churchWorkerMapper.mapToChurchWorkerDTO(churchWorkerToSave);
-        //Mockito.when(churchWorkerService.findChurchWorkerByLogin(churchWorkerDTOToSave.getLogin())).thenReturn(churchWorkerDTOToSave);
-
-        //ChurchWorkerDTO expectedChurchWorker = churchWorkerMapper.mapToChurchWorkerDTO(churchWorkerToSave);
-        //ChurchWorkerDTO churchWorkerDTOByFullName = churchWorkerService.findChurchWorkerByLogin(expectedChurchWorker.getLogin());
-
-
-
-    }
 }
