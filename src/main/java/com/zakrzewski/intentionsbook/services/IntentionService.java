@@ -1,6 +1,7 @@
 package com.zakrzewski.intentionsbook.services;
 
-import com.zakrzewski.intentionsbook.dtos.IntentionDTO;
+import com.zakrzewski.intentionsbook.dtos.IntentionRequest;
+import com.zakrzewski.intentionsbook.dtos.IntentionResponse;
 import com.zakrzewski.intentionsbook.entity.Intention;
 import com.zakrzewski.intentionsbook.mappers.IntentionMapper;
 import com.zakrzewski.intentionsbook.repositories.IntentionRepository;
@@ -22,24 +23,13 @@ public class IntentionService {
         this.intentionMapper = intentionMapper;
     }
 
-    public List<Intention> getAllIntentions(){
-        return intentionRepository.findAll();
-    }
-
-    public List<IntentionDTO> getAllIntentionDTO(){
-        List<Intention> intentions = intentionRepository.findAll();
-        return intentions.stream().map(intention -> intentionMapper.mapToIntentionDTO(intention)).collect(Collectors.toList());
-    }
-
-    public void saveIntentionDTO(IntentionDTO intentionDTO){
-        if (intentionDTO.getDateOfMass() == null || intentionDTO.getTimeOfMass() == null
-                || intentionDTO.getDescriptionOfIntention().equals("") || intentionDTO.getPriestOfMass().equals("")
-                || intentionDTO.getOtherComment().equals("") || intentionDTO.getPayment() == 0){
-            throw new IllegalArgumentException("Parameters cannot be empty");
-        }
-        Intention intention = intentionMapper.mapToIntention(intentionDTO);
+    public void save(IntentionRequest intentionRequest){
+        Intention intention = intentionMapper.mapToIntentionFromRequest(intentionRequest);
         intentionRepository.save(intention);
     }
 
-
+    public List<IntentionResponse> getAllIntentions(){
+        List<Intention> intentionList = intentionRepository.findAll();
+        return intentionList.stream().map(intention -> intentionMapper.mapToIntentionResponse(intention)).collect(Collectors.toList());
+    }
 }

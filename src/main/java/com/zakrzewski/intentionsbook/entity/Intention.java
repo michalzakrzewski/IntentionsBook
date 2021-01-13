@@ -33,26 +33,22 @@ public class Intention {
 
     @OneToOne
     @JoinColumn(name = "church_worker_id")
-    private ChurchWorker priestOfMass;
+    private ChurchWorker churchWorker;
 
     public Intention() {
     }
 
-    public Intention(LocalDate dateOfMass, LocalTime timeOfMass, String descriptionOfIntention, String otherComment, int payment, ChurchWorker priestOfMass) {
+    public Intention(LocalDate dateOfMass, LocalTime timeOfMass, String descriptionOfIntention, String otherComment, int payment, ChurchWorker churchWorker) {
         this.dateOfMass = dateOfMass;
         this.timeOfMass = timeOfMass;
         this.descriptionOfIntention = descriptionOfIntention;
         this.otherComment = otherComment;
         this.payment = payment;
-        this.priestOfMass = priestOfMass;
+        this.churchWorker = churchWorker;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public LocalDate getDateOfMass() {
@@ -95,12 +91,12 @@ public class Intention {
         this.payment = payment;
     }
 
-    public ChurchWorker getPriestOfMass() {
-        return priestOfMass;
+    public ChurchWorker getChurchWorker() {
+        return churchWorker;
     }
 
-    public void setPriestOfMass(ChurchWorker priestOfMass) {
-        this.priestOfMass = priestOfMass;
+    public void setChurchWorker(ChurchWorker churchWorker) {
+        this.churchWorker = churchWorker;
     }
 
     @Override
@@ -108,18 +104,12 @@ public class Intention {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Intention intention = (Intention) o;
-        return payment == intention.payment &&
-                Objects.equals(id, intention.id) &&
-                Objects.equals(dateOfMass, intention.dateOfMass) &&
-                Objects.equals(timeOfMass, intention.timeOfMass) &&
-                Objects.equals(descriptionOfIntention, intention.descriptionOfIntention) &&
-                Objects.equals(otherComment, intention.otherComment) &&
-                Objects.equals(priestOfMass, intention.priestOfMass);
+        return payment == intention.payment && Objects.equals(id, intention.id) && Objects.equals(dateOfMass, intention.dateOfMass) && Objects.equals(timeOfMass, intention.timeOfMass) && Objects.equals(descriptionOfIntention, intention.descriptionOfIntention) && Objects.equals(otherComment, intention.otherComment) && Objects.equals(churchWorker, intention.churchWorker);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, dateOfMass, timeOfMass, descriptionOfIntention, otherComment, payment, priestOfMass);
+        return Objects.hash(id, dateOfMass, timeOfMass, descriptionOfIntention, otherComment, payment, churchWorker);
     }
 
     @Override
@@ -131,7 +121,7 @@ public class Intention {
                 ", descriptionOfIntention='" + descriptionOfIntention + '\'' +
                 ", otherComment='" + otherComment + '\'' +
                 ", payment=" + payment +
-                ", priestOfMass=" + priestOfMass +
+                ", churchWorker=" + churchWorker +
                 '}';
     }
 }
