@@ -46,10 +46,6 @@ public class ChurchWorkerRequest {
         return login;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -61,17 +57,8 @@ public class ChurchWorkerRequest {
     public String getFullName() {
         return fullName;
     }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public String getChurchRole() {
         return churchRole;
-    }
-
-    public void setChurchRole(String churchRole) {
-        this.churchRole = churchRole;
     }
 
     @Override

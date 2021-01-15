@@ -28,22 +28,6 @@ public class ChurchWorkerResponse {
         }
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getChurchRole() {
-        return churchRole;
-    }
-
-    public void setChurchRole(String churchRole) {
-        this.churchRole = churchRole;
-    }
-
     @Override
     public String toString() {
         return "ChurchWorkerResponse{" +
