@@ -48,31 +48,15 @@ public class IntentionResponse {
         return dateOfMass;
     }
 
-    public void setDateOfMass(LocalDate dateOfMass) {
-        this.dateOfMass = dateOfMass;
-    }
-
     public LocalTime getTimeOfMass() {
         return timeOfMass;
-    }
-
-    public void setTimeOfMass(LocalTime timeOfMass) {
-        this.timeOfMass = timeOfMass;
     }
 
     public String getDescriptionOfIntention() {
         return descriptionOfIntention;
     }
 
-    public void setDescriptionOfIntention(String descriptionOfIntention) {
-        this.descriptionOfIntention = descriptionOfIntention;
-    }
-
     public String getPriestOfMassName() {
         return priestOfMassName;
-    }
-
-    public void setPriestOfMassName(String priestOfMassName) {
-        this.priestOfMassName = priestOfMassName;
     }
 }

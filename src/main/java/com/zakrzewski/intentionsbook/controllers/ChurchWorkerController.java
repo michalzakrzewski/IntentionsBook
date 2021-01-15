@@ -1,9 +1,7 @@
 package com.zakrzewski.intentionsbook.controllers;
 
-import com.zakrzewski.intentionsbook.dtos.ChurchWorkerDTO;
 import com.zakrzewski.intentionsbook.dtos.ChurchWorkerRequest;
 import com.zakrzewski.intentionsbook.dtos.ChurchWorkerResponse;
-import com.zakrzewski.intentionsbook.entity.ChurchWorker;
 import com.zakrzewski.intentionsbook.services.ChurchWorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

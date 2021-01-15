@@ -63,47 +63,28 @@ public class IntentionRequest {
         return dateOfMass;
     }
 
-    public void setDateOfMass(LocalDate dateOfMass) {
-        this.dateOfMass = dateOfMass;
-    }
-
     public LocalTime getTimeOfMass() {
         return timeOfMass;
     }
 
-    public void setTimeOfMass(LocalTime timeOfMass) {
-        this.timeOfMass = timeOfMass;
-    }
 
     public String getDescriptionOfIntention() {
         return descriptionOfIntention;
     }
 
-    public void setDescriptionOfIntention(String descriptionOfIntention) {
-        this.descriptionOfIntention = descriptionOfIntention;
-    }
 
     public String getOtherComment() {
         return otherComment;
     }
 
-    public void setOtherComment(String otherComment) {
-        this.otherComment = otherComment;
-    }
 
     public int getPayment() {
         return payment;
     }
 
-    public void setPayment(int payment) {
-        this.payment = payment;
-    }
 
     public Long getChurchWorkerId() {
         return churchWorkerId;
     }
 
-    public void setChurchWorkerId(Long churchWorkerId) {
-        this.churchWorkerId = churchWorkerId;
-    }
 }
