@@ -3,7 +3,6 @@ package com.zakrzewski.intentionsbook.services;
 import com.zakrzewski.intentionsbook.dtos.ChurchWorkerRequest;
 import com.zakrzewski.intentionsbook.dtos.ChurchWorkerResponse;
 import com.zakrzewski.intentionsbook.entity.ChurchWorker;
-import com.zakrzewski.intentionsbook.exceptions.EmptyLoginException;
 import com.zakrzewski.intentionsbook.mappers.ChurchWorkerMapper;
 import com.zakrzewski.intentionsbook.repositories.ChurchWorkerRepository;
 import com.zakrzewski.intentionsbook.validators.ChurchWorkerValidator;

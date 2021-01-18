@@ -2,7 +2,7 @@ package com.zakrzewski.intentionsbook.services;
 
 import com.zakrzewski.intentionsbook.dtos.ChurchWorkerRequest;
 import com.zakrzewski.intentionsbook.entity.ChurchWorker;
-import com.zakrzewski.intentionsbook.exceptions.EmptyLoginException;
+import com.zakrzewski.intentionsbook.exceptions.ChurchWorkerException;
 import com.zakrzewski.intentionsbook.mappers.ChurchWorkerMapper;
 import com.zakrzewski.intentionsbook.repositories.ChurchWorkerRepository;
 import com.zakrzewski.intentionsbook.validators.ChurchWorkerValidator;
@@ -49,7 +49,7 @@ public class ChurchWorkerServiceTest {
                 .fullName("Adam Nowak")
                 .churchRole("Kapłan")
                 .build();
-        Assertions.assertThrows(EmptyLoginException.class, () -> churchWorkerService.save(churchWorkerRequest));
+        Assertions.assertThrows(ChurchWorkerException.class, () -> churchWorkerService.save(churchWorkerRequest));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class ChurchWorkerServiceTest {
                 .fullName("Adam Nowak")
                 .churchRole("Kapłan")
                 .build();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> churchWorkerService.save(churchWorkerRequest));
+        Assertions.assertThrows(ChurchWorkerException.class, () -> churchWorkerService.save(churchWorkerRequest));
     }
 
    @Test
@@ -71,7 +71,7 @@ public class ChurchWorkerServiceTest {
                .fullName("")
                .churchRole("Kapłan")
                .build();
-       Assertions.assertThrows(IllegalArgumentException.class, () -> churchWorkerService.save(churchWorkerRequest));
+       Assertions.assertThrows(ChurchWorkerException.class, () -> churchWorkerService.save(churchWorkerRequest));
    }
 
    @Test
@@ -82,7 +82,7 @@ public class ChurchWorkerServiceTest {
                .fullName("Adam Nowak")
                .churchRole("")
                .build();
-       Assertions.assertThrows(IllegalArgumentException.class, () -> churchWorkerService.save(churchWorkerRequest));
+       Assertions.assertThrows(ChurchWorkerException.class, () -> churchWorkerService.save(churchWorkerRequest));
    }
 
 
