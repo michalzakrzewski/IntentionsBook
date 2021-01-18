@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class EmptyLoginAdvice {
+public class IntentionAdvice {
 
     @ResponseBody
-    @ExceptionHandler(EmptyLoginException.class)
+    @ExceptionHandler(IntentionException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public String emptyLoginHandler(EmptyLoginException exception){
+    public String intentionExceptionHandler(IntentionException exception){
         return exception.getMessage();
     }
 }
